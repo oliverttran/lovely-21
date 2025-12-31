@@ -5,23 +5,14 @@ const START_DAY = 1;
 const container = document.getElementById('card-container');
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modal-title');
-const modalText = document.getElementById('modal-text');
 const countdownDisplay = document.getElementById('countdown-display');
-
 let timerInterval;
 
-// Initialize Cards
 for (let i = 1; i <= 21; i++) {
     const card = document.createElement('div');
-    
-    // Logic to calculate the specific unlock date for each card
-    // Card 1 = Dec 30, Card 2 = Dec 31, Card 3 = Jan 1...
     const targetDate = new Date(START_YEAR, START_MONTH, START_DAY + (i - 1), 0, 0, 0);
-    
     const now = new Date();
     const isLocked = now < targetDate;
-
-    // Formatting date label for the card (e.g., "Dec 30" or "Jan 01")
     const dateLabel = targetDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
     card.className = `card ${isLocked ? 'locked' : ''}`;
@@ -30,47 +21,36 @@ for (let i = 1; i <= 21; i++) {
         <div class="card-label">${dateLabel}</div>
     `;
 
-    card.onclick = () => openModal(i, targetDate, isLocked);
+    card.onclick = () => {
+        if (isLocked) {
+            openLockedModal(i, targetDate);
+        } else {
+            window.location.href = `note${i}.html`; 
+        }
+    };
     container.appendChild(card);
 }
 
-// Modal and Timer Logic
-function openModal(dayIndex, targetDate, isLocked) {
+function openLockedModal(dayIndex, targetDate) {
     modal.style.display = 'flex';
+    modalTitle.innerText = `locked.`;
     clearInterval(timerInterval);
-
-    if (isLocked) {
-        modalTitle.innerText = `Locked`;
-        modalText.innerText = "This note will unlock on " + targetDate.toLocaleDateString() + " at midnight:";
-        
-        // Start the countdown immediately
-        updateCountdown(targetDate);
-        timerInterval = setInterval(() => updateCountdown(targetDate), 1000);
-    } else {
-        modalTitle.innerText = targetDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        modalText.innerText = getMessageForDay(dayIndex);
-        countdownDisplay.innerText = ""; // Clear timer if unlocked
-    }
+    updateCountdown(targetDate);
+    timerInterval = setInterval(() => updateCountdown(targetDate), 1000);
 }
 
 function updateCountdown(targetDate) {
     const now = new Date();
     const diff = targetDate - now;
-
     if (diff <= 0) {
-        clearInterval(timerInterval);
-        location.reload(); // Refresh to unlock the card once time is up
+        location.reload();
         return;
     }
-
     const d = Math.floor(diff / (1000 * 60 * 60 * 24));
     const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const m = Math.floor((diff / 1000 / 60) % 60);
     const s = Math.floor((diff / 1000) % 60);
-
-    // Displaying DD:HH:MM:SS
-    countdownDisplay.innerText = 
-        `${String(d).padStart(2, '0')}d : ${String(h).padStart(2, '0')}h : ${String(m).padStart(2, '0')}m : ${String(s).padStart(2, '0')}s`;
+    countdownDisplay.innerText = `${d}d : ${h}h : ${m}m : ${s}s`;
 }
 
 function closeModal() {
@@ -78,32 +58,84 @@ function closeModal() {
     clearInterval(timerInterval);
 }
 
-// Messages
-function getMessageForDay(day) {
-    const messages = {
-        1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        2: "Last day of 2025! I'm so glad I spent it with you.",
-        3: "Happy New Year! Here is to a 2026 filled with...",
-        // ... Add messages for days 4 through 21 here
-        21: "The final card! Happy Birthday! (Jan 19th)"
-    };
-    return messages[day] || "The message for this day is coming soon!";
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const skipIntro = urlParams.get('skip');
+    const overlay = document.getElementById('gift-overlay');
+    const mainContent = document.getElementById('main-content');
+
+    if (skipIntro === 'true') {
+        overlay.style.display = 'none';
+        mainContent.style.visibility = 'visible';
+        document.body.style.overflow = 'auto';
+    } else {
+        document.body.style.overflow = 'hidden';
+    }
+});
+
+function revealGift() {
+    const box = document.getElementById('gift-box');
+    const scaler = document.getElementById('gift-scaler');
+    const clickText = document.querySelector('.click-text');
+    
+    clickText.style.opacity = '0';
+    let count = 0;
+
+    const shakeInt = setInterval(() => {
+        count++;
+        
+        box.classList.add('shaking');
+
+        let newScale = 1 + (count * 0.25); 
+        scaler.style.transform = `scale(${newScale})`;
+
+        setTimeout(() => {
+            box.classList.remove('shaking');
+        }, 500);
+
+        if (count >= 3) {
+            clearInterval(shakeInt);
+            setTimeout(explode, 800); 
+        }
+    }, 1100);
 }
 
-// Readme
-function openReadme() {
-    modal.style.display = 'flex';
-    clearInterval(timerInterval);
-    modalTitle.innerText = "The Rules of the Journey";
-    countdownDisplay.innerText = "";
-    modalText.innerHTML = `
-        <div style="text-align: left; line-height: 1.8;">
-            <p>1. Each day from now until January 19th, a new card will unlock.</p>
-            <p>2. If you try to peek early, you'll see a countdown timer!</p>
-            <p>3. Every note is a little piece of why you're special to me.</p>
-            <p><strong>Enjoy the countdown!</strong></p>
-        </div>
-    `;
+function explode() {
+    const scaler = document.getElementById('gift-scaler');
+    const overlay = document.getElementById('gift-overlay');
+    const mainContent = document.getElementById('main-content');
+
+    scaler.style.transition = "transform 1.5s cubic-bezier(0.7, 0, 0.3, 1), opacity 1s";
+    scaler.style.transform = "scale(10)";
+    scaler.style.opacity = "0";
+
+    setTimeout(() => {
+        overlay.classList.add('revealed');
+        mainContent.style.opacity = '1';
+        spawnConfetti();
+    }, 600);
+
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 2500);
+}
+
+function spawnConfetti() {
+    const colors = ['#6c5ce7', '#ff7675', '#fdcb6e', '#55efc4', '#ffffff'];
+    for (let i = 0; i < 300; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        const duration = Math.random() * 2 + 3;
+        const delay = Math.random() * 0.5;
+        c.style.animation = `fall ${duration}s ${delay}s forwards ease-in`;
+        
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), (duration + delay) * 1200);
+    }
 }
 
 // Scroll-triggered animation
