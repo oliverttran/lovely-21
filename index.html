@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You :></title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="intro-section">
+        <h1 class="intro-text" id="birthday-text">happy birthday :)</h1>
+        <div class="scroll-indicator">Scroll to Reveal</div>
+    </div>
+
+    <div class="content-section" id="grid-section">
+        <div class="card-grid" id="card-container">
+            <div class="readme-card" onclick="openReadme()">
+                <div class="readme-content">
+                    <span class="readme-tag">read me</span>
+                    <h2>hehe.</h2>
+                </div>
+                <div class="readme-icon">♡</div>
+            </div>
+            </div>
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Locked</h2>
+            <div id="modal-body">
+                <p id="modal-text">Sorry pookie you're gonna have to wait a bit :)</p>
+                <div id="countdown-display"></div>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </div>
+</body>
+
+</html>
