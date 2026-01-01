@@ -3,137 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 1 - A Letter for You</title>
+    <title>Note 1</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-texture: #fff5eb;
-            --paper-color: #ffffff;
-            --text-color: #2d3436;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-texture);
-            /* Subtle Grainy Texture */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3External filter='url(%23noiseFilter)'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3C/svg%3E");
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* The "Back" Navigation */
-        .nav-header {
-            width: 100%;
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-
-        .back-button {
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px);
-            border-radius: 50px;
-            transition: 0.3s;
-        }
-
-        .back-button:hover {
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        /* The Paper Container */
-        .paper-container {
-            padding: 100px 20px; /* Space for scrolling */
-            display: flex;
-            justify-content: center;
-        }
-
-        .a4-sheet {
-            background: var(--paper-color);
-            width: 90vw;
-            max-width: 800px; /* Standard A4 desktop width */
-            min-height: 1120px; /* Mimics A4 aspect ratio */
-            padding: 80px 60px;
-            box-sizing: border-box;
-            box-shadow: 
-                0 1px 3px rgba(0,0,0,0.05),
-                0 20px 50px rgba(0,0,0,0.1);
-            border-radius: 4px; /* Slight roundness for a soft paper feel */
-            position: relative;
-            transform: rotate(-0.5deg); /* Very slight tilt for realism */
-            transition: transform 0.3s ease;
-        }
-
-        .a4-sheet:hover {
-            transform: rotate(0deg);
-        }
-
-        /* Typography */
-        .date {
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            color: #999;
-            margin-bottom: 40px;
-            display: block;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 50px;
-            color: var(--text-color);
-        }
-
-        .letter-body {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            line-height: 1.8;
-            color: #444;
-            text-align: left;
-        }
-
-        /* Responsive Tweaks */
-        @media (max-width: 600px) {
-            .a4-sheet {
-                padding: 40px 30px;
-                min-height: auto;
-            }
-            h1 { font-size: 1.8rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="notes.css">
 </head>
 <body>
 
     <div class="nav-header">
-        <a href="index.html" class="back-button">← Back</a>
+        <a href="index.html?skip=true" class="back-button">← Back</a>
+    </div>
+
+    <div id="envelope-overlay">
+        <div class="envelope-container" onclick="openLetter()">
+            <div class="letter-icon bouncing">
+                <div class="wax-seal">
+                    <svg viewBox="0 0 24 24" fill="#ff7675" width="36" height="36">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="open-instruction">Click to Open Letter</div>
+        </div>
+
+        <div class="envelope-panel top"></div>
+        <div class="envelope-panel bottom"></div>
     </div>
 
     <div class="paper-container">
         <article class="a4-sheet">
             <span class="date">December 30, 2025</span>
-            <h1>Loving</h1>
+            <h1>LOVING</h1>
+
+            <div class="polaroid-frame">
+                <img src="images/Note1_1.png" alt="Our First Photo :)">
+                <div class="polaroid-caption"> ♡ 3/28/23 ♡ </div>
+            </div>
             
             <div class="letter-body">
-                HEYY no lookie pookie >:(
+                Exactly 1010 days since I got the courage to ask for this photo. My balls had to double in size that day 😌. Even more so though one month later when I *tried* telling you how much I liked you hehe. That was such a gamble. My brain still couldn't wrap my mind around if it was possible that you liked me too. But I'm so grateful you did.<br><br>
+
+                Out of the list of 21 "reasons" I love you pookie, I'm starting with the fact that you saw me for who I am and liked me anyway. You saw something worth loving and have been filling me with your love ever since. You made me feel so special and worthy of love when I had never felt that before. You. Chose. Me. And now you're stuck with it no take backsies hehe :).<br><br>
+
+                If you weren't so loving pookie, I wouldn't be the happiest boyfriend+ (between bf and fiance hehe) ever right now. Even now it's still so mind boggling how someone so cool, funny, pretty, and amazing could see me that way. <br><br>
+                
+                And ever since then, you've only given me more and more love, even when I feel like I don't deserve it. You're always there for me and treating me, and gifting me, and loving me in all of your different ways. From comforting me, driving me around, feeding me :))) and taking care of me when I get sick. <br><br>
+
+                So as we start our new year boo boo, I'm so grateful to you for being the most loving, caring, and kind person I could ever dream of (even when you're a bit of a meanie beanie). Anyway, here's my official confirmation statement of a renewed love premium subscription from you hehe. I can't wait to spend this next year with your love. I'll never grow tired of it. Love you so much boo boo.
+
+                <br><br><br>
+
+                Love, <br>
+                Ooo Ooo ♡
             </div>
         </article>
     </div>
 
+    <div class="audio-wrapper">
+        <div class="audio-container">
+            <button id="music-toggle" class="sound-icon-btn">
+                <svg id="speaker-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                    <path id="volume-waves" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+            </button>
+            
+            <div class="slider-reveal">
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music/Note1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="notes.js"></script>
 </body>
 </html>

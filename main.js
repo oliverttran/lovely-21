@@ -1,4 +1,4 @@
-const START_YEAR = 2026;
+const START_YEAR = 2025;
 const START_MONTH = 0;
 const START_DAY = 1;
 

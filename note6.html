@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>read me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-texture: #fff5eb;
+            --paper-color: #ffffff;
+            --text-color: #2d3436;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-texture);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3External filter='url(%23noiseFilter)'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3C/svg%3E");
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .nav-header {
+            width: 100%;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .paper-container {
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .a4-sheet {
+            background: var(--paper-color);
+            width: 90vw;
+            max-width: 800px;
+            min-height: 1120px;
+            padding: 80px 60px;
+            box-sizing: border-box;
+            box-shadow: 
+                0 1px 3px rgba(0,0,0,0.05),
+                0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            position: relative;
+            transform: rotate(-0.5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .a4-sheet:hover {
+            transform: rotate(0deg);
+        }
+
+        /* Typography */
+        .date {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: var(--text-color);
+        }
+
+        .letter-body {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .a4-sheet {
+                padding: 40px 30px;
+                min-height: auto;
+            }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="index.html?skip=true" class="back-button">← Back</a>
+    </div>
+
+    <div class="paper-container">
+        <article class="a4-sheet">
+            <span class="date">December 30, 2025</span>
+            <h1>BAD POOKIE</h1>
+            
+            <div class="letter-body">
+                NO LOOKIE >:(
+            </div>
+        </article>
+    </div>
+
+</body>
+</html>
