@@ -3,116 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>read me</title>
+    <title>Note 2</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-texture: #fff5eb;
-            --paper-color: #ffffff;
-            --text-color: #2d3436;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-texture);
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3External filter='url(%23noiseFilter)'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3C/svg%3E");
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .nav-header {
-            width: 100%;
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-
-        .back-button {
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px);
-            border-radius: 50px;
-            transition: 0.3s;
-        }
-
-        .back-button:hover {
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .paper-container {
-            padding: 100px 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .a4-sheet {
-            background: var(--paper-color);
-            width: 90vw;
-            max-width: 800px;
-            min-height: 1120px;
-            padding: 80px 60px;
-            box-sizing: border-box;
-            box-shadow: 
-                0 1px 3px rgba(0,0,0,0.05),
-                0 20px 50px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            position: relative;
-            transform: rotate(-0.5deg);
-            transition: transform 0.3s ease;
-        }
-
-        .a4-sheet:hover {
-            transform: rotate(0deg);
-        }
-
-        /* Typography */
-        .date {
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            color: #999;
-            margin-bottom: 40px;
-            display: block;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 50px;
-            color: var(--text-color);
-        }
-
-        .letter-body {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            line-height: 1.8;
-            color: #444;
-            text-align: left;
-        }
-
-        @media (max-width: 600px) {
-            .a4-sheet {
-                padding: 40px 30px;
-                min-height: auto;
-            }
-            h1 { font-size: 1.8rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="notes.css">
 </head>
 <body>
 
@@ -120,16 +13,64 @@
         <a href="index.html?skip=true" class="back-button">← Back</a>
     </div>
 
+    <div id="envelope-overlay">
+        <div class="envelope-container" onclick="openLetter()">
+            <div class="letter-icon bouncing">
+                <div class="wax-seal">
+                    <svg viewBox="0 0 24 24" fill="#ff7675" width="36" height="36">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="open-instruction">Click to Open Letter</div>
+        </div>
+
+        <div class="envelope-panel top"></div>
+        <div class="envelope-panel bottom"></div>
+    </div>
+
     <div class="paper-container">
         <article class="a4-sheet">
-            <span class="date">December 30, 2025</span>
-            <h1>BAD POOKIE</h1>
+            <span class="date">January 2, 2026</span>
+            <h1>GOOBER</h1>
+
+            <div class="polaroid-frame">
+                <img src="images/Note2_1.png" alt="Woodstock :)">
+                <div class="polaroid-caption"> ♡ my Woodstock :) ♡ </div>
+            </div>
             
             <div class="letter-body">
-                NO LOOKIE >:(
+                What’s cooking good looking! You’re so cute in that photo hehe, even though you look like a little goober. I know you think the photo is unflattering but I love seeing your genuine smile bursting out in laughter right after. I love how you’re able to be so silly, goofy, and genuine around me. I’m so grateful for you AND your weirdness pookie. Everything that makes you you, from your little spouts of silliness to just your goofy nature. If I were a fly, I could just spend my time watching you go about your day and being in your presence. <br><br>
+
+                You really are just naturally funny. At least to me she is and I’m sure to a bunch of others too. There’s a reason people say so boo boo. What I love even more though is how laughable and fun to be around you are. Your laughter is so contagious and your smile is so warm :) (not to mention so pretty hehe). In the end, I’m so grateful for even just your presence. I hope you stay goofy and comfortable forever boo boo. I’ll always love your goofiness and genuine pookie. No need to feel embarrassed 😎<br><br>
+
+                <br><br><br>
+
+                Love, <br>
+                Ooo Ooo ♡
             </div>
         </article>
     </div>
 
+    <div class="audio-wrapper">
+        <div class="audio-container">
+            <button id="music-toggle" class="sound-icon-btn">
+                <svg id="speaker-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                    <path id="volume-waves" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+            </button>
+            
+            <div class="slider-reveal">
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music/chiikawa.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="notes.js"></script>
 </body>
 </html>
